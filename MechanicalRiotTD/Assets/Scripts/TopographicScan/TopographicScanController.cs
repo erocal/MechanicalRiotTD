@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -8,6 +9,7 @@ public class TopographicScanController : MonoBehaviour
 	#region -- 資源參考區 --
 
     public Transform sacnCenter;
+    public KeyCode scanKey;
 
     #endregion
 
@@ -15,6 +17,8 @@ public class TopographicScanController : MonoBehaviour
 
     Volume volume;
     VolumeProfile profile;
+    float distance;
+    bool isScan;
 
     #endregion
 
@@ -36,13 +40,27 @@ public class TopographicScanController : MonoBehaviour
         }
 
         topographicScanHDRP.origin1.Override(sacnCenter.position);
+        topographicScanHDRP.distance.Override(distance);
+
+        if (Input.GetKeyUp(scanKey) && !isScan) Scan();
 
     }
 
-	#endregion
-	
-	#region -- 方法參考區 --
+    #endregion
 
-	#endregion
-	
+    #region -- 方法參考區 --
+
+    /// <summary>
+    /// 掃描
+    /// </summary>
+    private void Scan()
+    {
+
+        isScan = true;
+        
+
+    }
+
+    #endregion
+
 }
