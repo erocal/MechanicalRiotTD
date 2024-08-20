@@ -50,6 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ABSPlayerDistance: 29
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 1
@@ -59,6 +60,7 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _DepthOffsetEnable: 0
+    - _DisappearDistance: 60
     - _DotNoiseScale: 30
     - _DotsSize: 0.8
     - _DoubleSidedEnable: 0
@@ -95,6 +97,8 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _BorderColor: {r: 6.4222345, g: 0, b: 4.2492785, a: 0}
+    - _BorderTextureOffset: {r: 0.405, g: 0.39, b: 0, a: 0}
+    - _BorderTextureTiling: {r: 0.2, g: 0.22, b: 0, a: 0}
     - _DotsColor: {r: 7.320755, g: 1.499701, b: 0.5179778, a: 0}
     - _DotsTiling: {r: 64, g: 32, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
