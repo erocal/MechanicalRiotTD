@@ -41,7 +41,6 @@ public class ScannerHDRP : MonoBehaviour
     [Header("SFX")]
     public AudioSource sfx;
     public float sfxDuration = 30f;
-    private bool m_IsScanning = false;
 
     static class ShaderIDs
     {
@@ -103,7 +102,6 @@ public class ScannerHDRP : MonoBehaviour
 
     public void Scan()
     {
-        m_IsScanning = true;
         PlaySFX();
         StartCoroutine(ScanCoroutine());
     }

@@ -71,6 +71,8 @@ Material:
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _GradientNoiseScale: 10
+    - _HexLattlceNoiseScale: 30
+    - _HexLattlceSize: 1
     - _MaskPower: 3
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
@@ -104,6 +106,8 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradientNoiseSpeed: {r: 0, g: 0.05, b: 0, a: 0}
+    - _HexLattlceColor: {r: 7.320755, g: 1.499701, b: 0.5179778, a: 0}
+    - _HexLattlceTiling: {r: 256, g: 256, b: 0, a: 0}
     - _Vector2: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &159824542158097369
