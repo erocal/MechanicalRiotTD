@@ -7,8 +7,6 @@ public class ThirdPersonCamera : MonoBehaviour
 
     #region -- 資源參考區 --
 
-    [SerializeField] InputController input;
-
     [Header("Camera跟隨的目標")]
     [SerializeField] Transform target;
 
@@ -24,7 +22,7 @@ public class ThirdPersonCamera : MonoBehaviour
     [Header("最大垂直角度")]
     [SerializeField] float maxVerticalAngle = 85;
     [Header("相機與目標的距離")]
-    [SerializeField] float cameraToTargetDistance = 10;
+    [SerializeField] float cameraToTargetDistance = 5;
     [Header("最小相機與目標的距離")]
     [SerializeField] float minDistance = 2;
     [Header("最大相機與目標的距離")]
@@ -38,13 +36,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
     #region -- 變數參考區 --
 
-    float mouse_X = 0;
-    float mouse_Y = 30;
+    private InputController input;
 
-    bool isChange;
+    private float mouse_X = 0;
+    private float mouse_Y = 30;
+
+    private bool isChange;
 
     // 應該是看滑鼠是不是鎖住的狀態
-    bool isLocked = false;
+    private bool isLocked = false;
 
 
     #endregion
@@ -53,7 +53,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void Awake()
 	{
-
+        input = InputController.Instance;
     }
 
     private void LateUpdate()

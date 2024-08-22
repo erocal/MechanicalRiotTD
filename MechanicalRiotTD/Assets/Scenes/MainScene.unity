@@ -4546,6 +4546,11 @@ PrefabInstance:
       propertyPath: shouldDrawGizmosThisFrame
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 458339633809165826, guid: d8b476b4d67cdd14e879ed35af8944a3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a79338ea25551454189f0554c28eae87, type: 2}
     - target: {fileID: 759668887465260791, guid: d8b476b4d67cdd14e879ed35af8944a3,
         type: 3}
       propertyPath: shouldDrawGizmosThisFrame
@@ -4683,7 +4688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7554325164263547768, guid: d8b476b4d67cdd14e879ed35af8944a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1823688467}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6813105585252192619, guid: d8b476b4d67cdd14e879ed35af8944a3,
         type: 3}
@@ -4692,7 +4701,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6813105585252192619, guid: d8b476b4d67cdd14e879ed35af8944a3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1381985869}
+      addedObject: {fileID: 1381985873}
+    - targetCorrespondingSourceObject: {fileID: 6813105585252192619, guid: d8b476b4d67cdd14e879ed35af8944a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1381985874}
   m_SourcePrefab: {fileID: 100100000, guid: d8b476b4d67cdd14e879ed35af8944a3, type: 3}
 --- !u!1001 &1148027182
 PrefabInstance:
@@ -4928,7 +4941,7 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: BoundsBox_center
         m_Overridden: 1
-      - m_Value: {x: 0.07, y: 1.63, z: -0.69}
+      - m_Value: {x: 0.07, y: 3.12, z: -1.7880001}
         m_Name: PlayerPosition
         m_Overridden: 1
       - m_Value: {x: 0, y: 100, z: -108}
@@ -5566,8 +5579,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &1381985869
-CapsuleCollider:
+--- !u!143 &1381985873
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5584,11 +5597,33 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
+  m_Height: 3
   m_Radius: 0.26
-  m_Height: 1.65
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.47, z: 0}
+--- !u!114 &1381985874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381985863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a048ebfc7f69d4b43a3b877f1b0dc72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thirdPersonCamera: {fileID: 1823688469}
+  moveSpeed: 8
+  sprintSpeedModifier: 2
+  crouchedSpeedModifer: 0.5
+  rotateSpeed: 5
+  addSpeedRatio: 0.1
+  gravityDownForce: 50
 --- !u!1001 &1403475637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7207,7 +7242,7 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: BoundsBox_center
         m_Overridden: 1
-      - m_Value: {x: 0.07, y: 1.63, z: -0.69}
+      - m_Value: {x: 0.07, y: 3.12, z: -1.7880001}
         m_Name: PlayerPosition
         m_Overridden: 1
       - m_Value: {x: -201.4, y: 100, z: 13.9}
@@ -7378,7 +7413,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 20.78461
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -7393,7 +7428,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -7420,11 +7455,11 @@ Transform:
   m_GameObject: {fileID: 1823688464}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 1.63, z: -0.69}
+  m_LocalPosition: {x: -0.0040000007, y: 3.12, z: -2.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1381985866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1823688468
 MonoBehaviour:
@@ -7567,17 +7602,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b9c17b1d5e4254795a73efe51a74f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 2021408246}
   target: {fileID: 1381985866}
   sensitivity_X: 2
   sensitivity_Y: 2
   sensitivity_Z: 5
   minVerticalAngle: -10
-  maxVerticalAngle: 85
+  maxVerticalAngle: 30
   cameraToTargetDistance: 5
   minDistance: 1
   maxDistance: 25
-  offset: {x: 0, y: 1.2, z: 0}
+  offset: {x: 0, y: 2.5, z: 0}
   offset_Y: 100
 --- !u!1001 &1913388640
 PrefabInstance:
@@ -8011,7 +8045,7 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: BoundsBox_center
         m_Overridden: 1
-      - m_Value: {x: 0.07, y: 1.63, z: -0.69}
+      - m_Value: {x: 0.07, y: 3.12, z: -1.7880001}
         m_Name: PlayerPosition
         m_Overridden: 1
       - m_Value: {x: 200, y: 100, z: 13.9}
@@ -8409,12 +8443,12 @@ PrefabInstance:
     - target: {fileID: 2560612114518685484, guid: 58b462da0c06e754185c21d1331736f9,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: 1.63
+      value: 3.12
       objectReference: {fileID: 0}
     - target: {fileID: 2560612114518685484, guid: 58b462da0c06e754185c21d1331736f9,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
-      value: -0.69
+      value: -1.7880001
       objectReference: {fileID: 0}
     - target: {fileID: 7780349738009881970, guid: 58b462da0c06e754185c21d1331736f9,
         type: 3}
@@ -8480,7 +8514,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1823688467}
   - {fileID: 1147781897}
   - {fileID: 157207114}
   - {fileID: 432432461}

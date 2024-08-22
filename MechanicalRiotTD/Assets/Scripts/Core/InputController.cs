@@ -5,6 +5,22 @@ public class InputController : MonoBehaviour
 {
     #region -- 參數參考區 --
 
+    private static InputController _instance;
+
+    public static InputController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<InputController>();
+            }
+
+            return _instance;
+        }
+        private set { }
+    }
+
     public float vertical;
     public float horizontal;
 
@@ -12,12 +28,19 @@ public class InputController : MonoBehaviour
 
     #region -- 初始化/運作 --
 
+    private InputController()
+    {
+    }
+
     private void Awake()
     {
+
+        GetInstance();
         //設定游標狀態 (鎖定)
         Cursor.lockState = CursorLockMode.None;
         // 是否顯示游標
         Cursor.visible = true;
+
     }
 
     private void Update()
@@ -27,9 +50,34 @@ public class InputController : MonoBehaviour
         //horizontal = Input.GetAxis("Horizontal");
     }
 
+    private void OnDestroy()
+    {
+        _instance = null;
+    }
+
     #endregion
 
     #region -- 方法參考區 --
+
+    #region -- 單例模式 --
+
+    /// <summary>
+    /// 獲取唯一實例
+    /// </summary>
+    private void GetInstance()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            _instance = FindObjectOfType<InputController>();
+            return;
+        }
+    }
+
+    #endregion
 
     /// <summary>
     /// 取得WASD的Axis
@@ -140,7 +188,7 @@ public class InputController : MonoBehaviour
     {
         if (CanProcessInput())
         {
-            return Input.GetAxis("Mouse ScrollWheel");
+            return -Input.GetAxis("Mouse ScrollWheel");
         }
         return 0;
     }
