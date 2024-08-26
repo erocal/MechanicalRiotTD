@@ -1,9 +1,7 @@
 using System;
-using System.Security.Claims;
 using UnityEngine;
-using static UnityEngine.LightAnchor;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -26,6 +24,12 @@ public class PlayerController : MonoBehaviour
 
     #region -- 變數參考區 --
 
+    #region -- 常數 --
+
+    private const string WALK_SPEED_PARAMETER = "WalkSpeed";
+
+    #endregion
+
     #region -- Action --
 
     public event Action onCaplock;
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private InputController input;
     private CharacterController characterController;
+    private Animator animator;
     private Camera m_Camera;
 
     [Tooltip("下一幀要移動到的目標位置")]
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
         input = InputController.Instance;
         m_Camera = Camera.main;
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
     }
 
@@ -84,6 +90,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void MoveBehaviour()
     {
+
         targetMovement = Vector3.zero;
         Vector3 pretargetMovement = targetMovement;
         targetMovement += input.GetMoveInput().z * GetCurrentCameraForward();
@@ -121,42 +128,11 @@ public class PlayerController : MonoBehaviour
             lastFrameSpeed = Mathf.Lerp(lastFrameSpeed, nextFrameSpeed, addSpeedRatio);
         }
 
+        ChangeAnimatorWalkSpeed(lastFrameSpeed);
+
         // 動態變化移動速度
         characterController.Move(moveSpeed * Time.deltaTime * targetMovement);
 
-    }
-
-    /// <summary>
-    /// 取得目前相機的正面方向
-    /// </summary>
-    private Vector3 GetCurrentCameraForward()
-    {
-        Vector3 cameraForward = m_Camera.transform.forward;
-        cameraForward.y = 0f;
-        //歸一化
-        cameraForward.Normalize();
-        return cameraForward;
-    }
-
-    /// <summary>
-    /// 取得目前相機的右側方向
-    /// </summary>
-    private Vector3 GetCurrentCameraRight()
-    {
-        Vector3 cameraRight = m_Camera.transform.right;
-        cameraRight.y = 0f;
-        //歸一化
-        cameraRight.Normalize();
-        return cameraRight;
-    }
-
-    /// <summary>
-    /// 平滑旋轉角度到目標方向
-    /// </summary>
-    /// <param name="targetMovement">目標方向</param>
-    private void SmoothRotation(Vector3 targetMovement)
-    {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(targetMovement, Vector3.up), rotateSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -169,6 +145,55 @@ public class PlayerController : MonoBehaviour
         jumpDirection.y = Mathf.Max(jumpDirection.y, -gravityDownForce);
 
         characterController.Move(jumpDirection * Time.deltaTime);
+
+    }
+
+    /// <summary>
+    /// 取得目前相機的正面方向
+    /// </summary>
+    private Vector3 GetCurrentCameraForward()
+    {
+
+        Vector3 cameraForward = m_Camera.transform.forward;
+        cameraForward.y = 0f;
+        //歸一化
+        cameraForward.Normalize();
+        return cameraForward;
+
+    }
+
+    /// <summary>
+    /// 取得目前相機的右側方向
+    /// </summary>
+    private Vector3 GetCurrentCameraRight()
+    {
+
+        Vector3 cameraRight = m_Camera.transform.right;
+        cameraRight.y = 0f;
+        //歸一化
+        cameraRight.Normalize();
+        return cameraRight;
+
+    }
+
+    /// <summary>
+    /// 平滑旋轉角度到目標方向
+    /// </summary>
+    /// <param name="targetMovement">目標方向</param>
+    private void SmoothRotation(Vector3 targetMovement)
+    {
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(targetMovement, Vector3.up), rotateSpeed * Time.deltaTime);
+    
+    }
+
+    /// <summary>
+    /// WalkSpeed傳入Animator
+    /// </summary>
+    private void ChangeAnimatorWalkSpeed(float speed)
+    {
+
+        animator.SetFloat(WALK_SPEED_PARAMETER, speed);
 
     }
 

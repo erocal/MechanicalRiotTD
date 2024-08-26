@@ -49,7 +49,8 @@ public class TerrainScanner : MonoBehaviour
     private void SpawnTerrainScanner()
     {
 
-        GameObject terrainScanner = Instantiate(terrainScannerVFX, instantiatePos.position, Quaternion.identity);
+        GameObject terrainScanner = 
+            Instantiate(terrainScannerVFX, instantiatePos.position, Quaternion.identity, this.transform);
         ParticleSystem terrainScannerParticleSystem = terrainScanner.transform.GetChild(0).GetComponent<ParticleSystem>();
 
         if (terrainScannerParticleSystem != null)

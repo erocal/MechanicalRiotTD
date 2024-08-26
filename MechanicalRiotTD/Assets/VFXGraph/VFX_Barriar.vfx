@@ -151,7 +151,7 @@ VisualEffectResource:
   m_Infos:
     m_RendererSettings:
       motionVectorGenerationMode: 0
-      shadowCastingMode: 1
+      shadowCastingMode: 0
       receiveShadows: 0
       reflectionProbeUsage: 0
       lightProbeUsage: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
   indirectDraw: 0
   computeCulling: 0
   frustumCulling: 0
-  castShadows: 1
+  castShadows: 0
   useExposureWeight: 0
   needsOwnSort: 0
   shaderGraph: {fileID: 4333940904281232215, guid: e39f44af0643df146a8d89cf6dc47808,
@@ -803,22 +803,22 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    - 0
-    - 2
-    - 0
-    - 0
-    - 0
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 0
-    - 0
-    - 2
     - 1
     - 2
+    - 0
+    - 0
+    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 0
+    - 0
+    - 0
+    - 1
+    - 0
     - 2
     - 2
     - 4
