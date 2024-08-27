@@ -22,12 +22,16 @@ public class TerrainScanner : MonoBehaviour
 
     #region -- 變數參考區 --
 
+    ActionManager actionManager;
+
     #endregion
 
     #region -- 初始化/運作 --
 
     private void Awake()
     {
+
+        actionManager = ActionManager.Instance;
 
     }
 
@@ -62,6 +66,9 @@ public class TerrainScanner : MonoBehaviour
             main.startSize = size;
 
             terrainScanner.SetActive(true);
+
+            if(actionManager != null && actionManager.onScan != null)
+                actionManager.onScan.Invoke();
 
         }
         else Debug.LogError("找不到terrainScanner特效");

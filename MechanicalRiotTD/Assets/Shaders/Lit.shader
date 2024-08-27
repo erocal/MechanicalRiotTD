@@ -1,4 +1,4 @@
-Shader "Custom/Lit_Outline"
+Shader "Custom/Lit"
 {
     Properties
     {
@@ -210,10 +210,6 @@ Shader "Custom/Lit_Outline"
 
         // Ray Tracing
         [ToggleUI] _RayTracing("Ray Tracing (Preview)", Float) = 0
-
-        // Outline
-        _OutlineColor ("Outline Color", Color) = (0, 0, 0, 1)
-        _Outline ("Outline Width", Range(0.002, 1)) = .005
 
         [HideInInspector] _DiffusionProfile("Obsolete, kept for migration purpose", Int) = 0
         [HideInInspector] _DiffusionProfileAsset("Diffusion Profile Asset", Vector) = (0, 0, 0, 0)

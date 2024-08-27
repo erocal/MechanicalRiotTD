@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InputController : MonoBehaviour
 {
-    #region -- °Ñ¼Æ°Ñ¦Ò°Ï --
+    #region -- åƒæ•¸åƒè€ƒå€ --
 
     private static InputController _instance;
 
@@ -26,7 +26,7 @@ public class InputController : MonoBehaviour
 
     #endregion
 
-    #region -- ªì©l¤Æ/¹B§@ --
+    #region -- åˆå§‹åŒ–/é‹ä½œ --
 
     private InputController()
     {
@@ -36,9 +36,9 @@ public class InputController : MonoBehaviour
     {
 
         GetInstance();
-        //³]©w´å¼Ğª¬ºA (Âê©w)
+        //è¨­å®šæ¸¸æ¨™ç‹€æ…‹ (é–å®š)
         Cursor.lockState = CursorLockMode.None;
-        // ¬O§_Åã¥Ü´å¼Ğ
+        // æ˜¯å¦é¡¯ç¤ºæ¸¸æ¨™
         Cursor.visible = true;
 
     }
@@ -57,12 +57,12 @@ public class InputController : MonoBehaviour
 
     #endregion
 
-    #region -- ¤èªk°Ñ¦Ò°Ï --
+    #region -- æ–¹æ³•åƒè€ƒå€ --
 
-    #region -- ³æ¨Ò¼Ò¦¡ --
+    #region -- å–®ä¾‹æ¨¡å¼ --
 
     /// <summary>
-    /// Àò¨ú°ß¤@¹ê¨Ò
+    /// ç²å–å”¯ä¸€å¯¦ä¾‹
     /// </summary>
     private void GetInstance()
     {
@@ -80,7 +80,7 @@ public class InputController : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// ¨ú±oWASDªºAxis
+    /// å–å¾—WASDçš„Axis
     /// </summary>
     public Vector3 GetMoveInput()
     {
@@ -88,7 +88,7 @@ public class InputController : MonoBehaviour
         {
             Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-            //­­¨î³t«×
+            //é™åˆ¶é€Ÿåº¦
             move = Vector3.ClampMagnitude(move, 1);
 
             return move;
@@ -98,7 +98,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬O§_«ö¤UCapsLock¥[³t
+    /// æ˜¯å¦æŒ‰ä¸‹CapsLockåŠ é€Ÿ
     /// </summary>
     public bool GetCapInput()
     {
@@ -110,7 +110,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬O§_«ö¦íControl¥[³t
+    /// æ˜¯å¦æŒ‰ä½ControlåŠ é€Ÿ
     /// </summary>
     public bool GetCprintInput()
     {
@@ -122,7 +122,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬O§_«ö¤UControl¥[³t
+    /// æ˜¯å¦æŒ‰ä¸‹ControlåŠ é€Ÿ
     /// </summary>
     public bool GetCprintInputDown()
     {
@@ -134,7 +134,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬O§_«ö¦íSpace¸õÅD
+    /// æ˜¯å¦æŒ‰ä½Spaceè·³èº
     /// </summary>
     public bool GetJumpInput()
     {
@@ -146,7 +146,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬O§_«ö¤USpace¸õÅD
+    /// æ˜¯å¦æŒ‰ä¸‹Spaceè·³èº
     /// </summary>
     public bool GetJumpInputDown()
     {
@@ -158,7 +158,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o Mouse X ªº Axis
+    /// å–å¾— Mouse X çš„ Axis
     /// </summary>
     public float GetMouseXAxis()
     {
@@ -170,7 +170,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o Mouse Y ªº Axis
+    /// å–å¾— Mouse Y çš„ Axis
     /// </summary>
     public float GetMouseYAxis()
     {
@@ -182,7 +182,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±oºu½üªº Axis
+    /// å–å¾—æ»¾è¼ªçš„ Axis
     /// </summary>
     public float GetMouseScrollWheelAxis()
     {
@@ -194,7 +194,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¬O§_«ö¤U·Æ¹«¥ªÁä
+    /// æ˜¯å¦æŒ‰ä¸‹æ»‘é¼ å·¦éµ
     /// </summary>
     public bool GetClick()
     {
@@ -202,7 +202,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o¬O§_«ö¤U·Æ¹«¥ªÁä(¶}¤õ)
+    /// å–å¾—æ˜¯å¦æŒ‰ä¸‹æ»‘é¼ å·¦éµ(é–‹ç«)
     /// </summary>
     public bool GetFireInputDown()
     {
@@ -214,7 +214,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o¬O§_«ùÄò«ö¤U·Æ¹«¥ªÁä(¶}¤õ)
+    /// å–å¾—æ˜¯å¦æŒçºŒæŒ‰ä¸‹æ»‘é¼ å·¦éµ(é–‹ç«)
     /// </summary>
     public bool GetFireInputHeld()
     {
@@ -226,7 +226,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o¬O§_©ñ¶}·Æ¹«¥ªÁä(¶}¤õ)
+    /// å–å¾—æ˜¯å¦æ”¾é–‹æ»‘é¼ å·¦éµ(é–‹ç«)
     /// </summary>
     public bool GetFireInputUp()
     {
@@ -238,7 +238,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o¬O§_«ö¤U·Æ¹«¥kÁä(ºË·Ç)
+    /// å–å¾—æ˜¯å¦æŒ‰ä¸‹æ»‘é¼ å³éµ(ç„æº–)
     /// </summary>
     public bool GetAimInputDown()
     {
@@ -250,7 +250,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o·Æ¹«¬O§_«ö¤UReload
+    /// å–å¾—æ»‘é¼ æ˜¯å¦æŒ‰ä¸‹Reload
     /// </summary>
     public bool GetReloadInputDown()
     {
@@ -262,7 +262,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¨ú±o¬O§_«ö¤U¤Á´«ªZ¾¹¡A¦V¥ª¤Á´« : -1¡A¦V¥k¤Á´« : 1
+    /// å–å¾—æ˜¯å¦æŒ‰ä¸‹åˆ‡æ›æ­¦å™¨ï¼Œå‘å·¦åˆ‡æ› : -1ï¼Œå‘å³åˆ‡æ› : 1
     /// </summary>
     public int GetSwichWeaponInput()
     {
@@ -281,7 +281,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ½T»{µe­±¬O§_¬°Âê©wª¬ºA
+    /// ç¢ºèªç•«é¢æ˜¯å¦ç‚ºé–å®šç‹€æ…‹
     /// </summary>
     private void CheckCursorState()
     {
@@ -297,7 +297,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// §ó·s¹«¼Ğª¬ºA¬°Âê©w
+    /// æ›´æ–°é¼ æ¨™ç‹€æ…‹ç‚ºé–å®š
     /// </summary>
     public void CursorStateLocked()
     {
@@ -306,7 +306,7 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// Åã¥Ü¹«¼Ğ&§ó·s¹«¼Ğª¬ºA¬°¥¼Âê©w
+    /// é¡¯ç¤ºé¼ æ¨™&æ›´æ–°é¼ æ¨™ç‹€æ…‹ç‚ºæœªé–å®š
     /// </summary>
     public void CursorStateUnlocked()
     {
@@ -315,11 +315,11 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¦^¶Ç¹«¼Ğª¬ºA¬O§_³B©óÂê©w
+    /// å›å‚³é¼ æ¨™ç‹€æ…‹æ˜¯å¦è™•æ–¼é–å®š
     /// </summary>
     public bool CanProcessInput()
     {
-        // ¦pªGCursorª¬ºA¤£¦bÂê©w¤¤´N¤£¯à³B²zInput
+        // å¦‚æœCursorç‹€æ…‹ä¸åœ¨é–å®šä¸­å°±ä¸èƒ½è™•ç†Input
         return Cursor.lockState == CursorLockMode.Locked;
     }
 
