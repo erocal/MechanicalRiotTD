@@ -38,6 +38,8 @@ Shader "Custom/VFDistanceFade"
                 float2 uv : TEXCOORD1;
             };
 
+            CBUFFER_START(UnityPerMaterial)
+
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
@@ -49,6 +51,8 @@ Shader "Custom/VFDistanceFade"
             //remapping of distance
             float _MinDistance;
             float _MaxDistance;
+
+            CBUFFER_END
 
             v2f vert(appdata v) {
                 v2f o;

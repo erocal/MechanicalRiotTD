@@ -211,6 +211,10 @@ Shader "Custom/Lit"
         // Ray Tracing
         [ToggleUI] _RayTracing("Ray Tracing (Preview)", Float) = 0
 
+        [NoScaleOffset]_DitherPattern ("Dithering Pattern", 2D) = "white" {}
+        _MinDistance ("Minimum Fade Distance", Float) = 15
+        _MaxDistance ("Maximum Fade Distance", Float) = 30
+
         [HideInInspector] _DiffusionProfile("Obsolete, kept for migration purpose", Int) = 0
         [HideInInspector] _DiffusionProfileAsset("Diffusion Profile Asset", Vector) = (0, 0, 0, 0)
         [HideInInspector] _DiffusionProfileHash("Diffusion Profile Hash", Float) = 0
@@ -1298,5 +1302,5 @@ Shader "Custom/Lit"
     }
 
     FallBack "Hidden/HDRP/FallbackError"
-    CustomEditor "Rendering.HighDefinition.LitGUI"
+    CustomEditor "CustomLitGUI"
 }
