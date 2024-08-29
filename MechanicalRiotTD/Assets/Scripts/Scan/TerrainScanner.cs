@@ -9,8 +9,6 @@ public class TerrainScanner : MonoBehaviour
 
     [Tooltip("terrainScanner特效")]
     [SerializeField] private GameObject terrainScannerVFX;
-    [Tooltip("生成按鍵")]
-    [SerializeField] private KeyCode instantiateKeyCode = KeyCode.F;
     [Tooltip("生成位置")]
     [SerializeField] private Transform instantiatePos;
     [Tooltip("持續時間")]
@@ -22,6 +20,7 @@ public class TerrainScanner : MonoBehaviour
 
     #region -- 變數參考區 --
 
+    InputController input;
     ActionManager actionManager;
 
     #endregion
@@ -31,6 +30,7 @@ public class TerrainScanner : MonoBehaviour
     private void Awake()
     {
 
+        input = InputController.Instance;
         actionManager = ActionManager.Instance;
 
     }
@@ -38,8 +38,7 @@ public class TerrainScanner : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyUp(instantiateKeyCode)) SpawnTerrainScanner();
-
+        if (input.GetScanInput()) SpawnTerrainScanner();
 
     }
 

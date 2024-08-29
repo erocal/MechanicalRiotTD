@@ -7342,7 +7342,7 @@ GameObject:
   - component: {fileID: 537878130859584808}
   - component: {fileID: 2659369693833056498}
   - component: {fileID: 991900351142579046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tree Variant (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12501,7 +12501,7 @@ GameObject:
   - component: {fileID: 6735406797899602280}
   - component: {fileID: 2837732881179837626}
   - component: {fileID: 2178366683496545029}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor_Ramp Variant (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29373,7 +29373,7 @@ GameObject:
   - component: {fileID: 4035153584777037429}
   - component: {fileID: 2638512828241857890}
   - component: {fileID: 7376246830786453375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tree Variant (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

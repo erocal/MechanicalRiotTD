@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class RobotController : MonoBehaviour
+public class RobotController : RobotsPool
 {
 
     #region -- 資源參考區 --
 
     [SerializeField] private float scanRevealDuration = 5f;
+    [SerializeField] private float selfDestructDuration = 60f;
 
     #endregion
 
@@ -16,7 +15,6 @@ public class RobotController : MonoBehaviour
 
     int initLayer = 0;
     private Coroutine currentRevealCoroutine;
-    bool isReveal;
 
     #endregion
 
@@ -26,6 +24,7 @@ public class RobotController : MonoBehaviour
     {
 
         initLayer = this.gameObject.layer;
+        StartCoroutine("SelfDestruct");
 
     }
 
@@ -56,6 +55,15 @@ public class RobotController : MonoBehaviour
     #endregion
 
     #region -- 方法參考區 --
+
+    private IEnumerator SelfDestruct()
+    {
+
+        yield return new WaitForSeconds(selfDestructDuration);
+
+        Recovery(this.gameObject, ObjectPoolType.Robot);
+
+    }
 
     /// <summary>
     /// 設置母物件底下的所有Layer

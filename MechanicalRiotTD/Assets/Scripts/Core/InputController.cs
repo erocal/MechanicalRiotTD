@@ -21,9 +21,6 @@ public class InputController : MonoBehaviour
         private set { }
     }
 
-    public float vertical;
-    public float horizontal;
-
     #endregion
 
     #region -- 初始化/運作 --
@@ -46,8 +43,6 @@ public class InputController : MonoBehaviour
     private void Update()
     {
         CheckCursorState();
-        //vertical = Input.GetAxis("Vertical");
-        //horizontal = Input.GetAxis("Horizontal");
     }
 
     private void OnDestroy()
@@ -110,49 +105,13 @@ public class InputController : MonoBehaviour
     }
 
     /// <summary>
-    /// 是否按住Control加速
+    /// 是否按下Scan按鍵
     /// </summary>
-    public bool GetCprintInput()
+    public bool GetScanInput()
     {
         if (CanProcessInput())
         {
-            return Input.GetKey(KeyCode.LeftControl);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 是否按下Control加速
-    /// </summary>
-    public bool GetCprintInputDown()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetKeyDown(KeyCode.LeftControl);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 是否按住Space跳躍
-    /// </summary>
-    public bool GetJumpInput()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetKey(KeyCode.Space);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 是否按下Space跳躍
-    /// </summary>
-    public bool GetJumpInputDown()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetKeyDown(KeyCode.Space);
+            return Input.GetKeyUp(KeyCode.F);
         }
         return false;
     }
@@ -189,93 +148,6 @@ public class InputController : MonoBehaviour
         if (CanProcessInput())
         {
             return -Input.GetAxis("Mouse ScrollWheel");
-        }
-        return 0;
-    }
-
-    /// <summary>
-    /// 是否按下滑鼠左鍵
-    /// </summary>
-    public bool GetClick()
-    {
-        return Input.GetMouseButtonDown(0);
-    }
-
-    /// <summary>
-    /// 取得是否按下滑鼠左鍵(開火)
-    /// </summary>
-    public bool GetFireInputDown()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetMouseButtonDown(0);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 取得是否持續按下滑鼠左鍵(開火)
-    /// </summary>
-    public bool GetFireInputHeld()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetMouseButton(0);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 取得是否放開滑鼠左鍵(開火)
-    /// </summary>
-    public bool GetFireInputUp()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetMouseButtonUp(0);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 取得是否按下滑鼠右鍵(瞄準)
-    /// </summary>
-    public bool GetAimInputDown()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetMouseButtonDown(1);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 取得滑鼠是否按下Reload
-    /// </summary>
-    public bool GetReloadInputDown()
-    {
-        if (CanProcessInput())
-        {
-            return Input.GetKeyDown(KeyCode.R);
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 取得是否按下切換武器，向左切換 : -1，向右切換 : 1
-    /// </summary>
-    public int GetSwichWeaponInput()
-    {
-        if (CanProcessInput())
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                return -1;
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                return 1;
-            }
         }
         return 0;
     }
