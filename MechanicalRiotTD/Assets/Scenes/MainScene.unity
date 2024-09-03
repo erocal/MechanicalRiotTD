@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -698,6 +698,7 @@ Transform:
   - {fileID: 808670429}
   - {fileID: 1230718286}
   - {fileID: 3818569294721651110}
+  - {fileID: 8573498516565163992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &338620398
@@ -3435,6 +3436,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6356c20cb842ff44e8010db3660a4edb, type: 3}
+--- !u!4 &8573498516565163992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+    type: 3}
+  m_PrefabInstance: {fileID: 9173467130538002588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9036043516058654598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3528,6 +3535,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a54f29c18b12d9d419db7b6fa273ed10, type: 3}
+--- !u!1001 &9173467130538002588
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 283418776}
+    m_Modifications:
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572018816754386678, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596507887978162234, guid: eef0ac9a1d7470e409447377d1db5fb1,
+        type: 3}
+      propertyPath: m_Name
+      value: torreMoba_small
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eef0ac9a1d7470e409447377d1db5fb1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
