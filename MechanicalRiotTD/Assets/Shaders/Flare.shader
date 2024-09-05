@@ -2,6 +2,8 @@ Shader "Unlit/Flare"
 {
 	Properties
 	{
+		[NoScaleOffset]_Mask("Mask", 2D) = "white" {}
+		_LightCenterRadius ("Light Center Radius", Float) = 1
 	}
 	SubShader
 	{
@@ -20,10 +22,12 @@ Shader "Unlit/Flare"
 			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
+				float2 maskUV : TEXCOORD1;
 			};
 			struct v2f
 			{
 				float2 uv : TEXCOORD0;
+				float2 maskUV : TEXCOORD1;
 				UNITY_FOG_COORDS(1)
 				float4 vertex : SV_POSITION;
 			};
@@ -367,18 +371,27 @@ static const float p_o1354824_d_in2_z = 0.760000000;
 static const float p_o1354823_default_in1 = 0.000000000;
 static const float p_o1354823_default_in2 = 0.000000000;
 static const float p_o1354822_sides = 6.000000000;
-static const float p_o1354822_radius = 1.000000000;
+static const float p_o1354822_radius = .500000000;
 static const float p_o1354822_edge = 1.020000000;
 static const float p_o1354831_translate_x = 0.000000000;
 static const float p_o1354831_translate_y = 0.000000000;
 static const float p_o1354831_rotate = -3.000000000;
 static const float p_o1354831_scale_x = 1.150000000;
 static const float p_o1354831_scale_y = 1.000000000;
+			CBUFFER_START(UnityPerMaterial)
+
+            sampler2D _Mask;
+            float4 _Mask_ST;
+
+			float _LightCenterRadius;
+
+            CBUFFER_END
 		
 			v2f vert (appdata v) {
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
+				o.maskUV = TRANSFORM_TEX(v.maskUV, _Mask);
 				UNITY_TRANSFER_FOG(o,o.vertex);
 				return o;
 			}
@@ -405,7 +418,7 @@ float o1354821_0_1_f = o1354821_0_clamp_false;
 float3 o1354825_0_clamp_false = pow(tofloat3(o1354821_0_1_f),tofloat3(p_o1354825_d_in2_x, p_o1354825_d_in2_y, p_o1354825_d_in2_z));
 float3 o1354825_0_clamp_true = clamp(o1354825_0_clamp_false, tofloat3(0.0), tofloat3(1.0));
 float3 o1354825_0_2_rgb = o1354825_0_clamp_false;
-float o1354822_0_1_f = shape_circle((transform2((scale((uv), tofloat2(0.5+p_o1354876_cx, 0.5+p_o1354876_cy), tofloat2(p_o1354876_scale_x, p_o1354876_scale_y))), tofloat2(p_o1354830_translate_x*(2.0*1.0-1.0), p_o1354830_translate_y*(2.0*1.0-1.0)), p_o1354830_rotate*0.01745329251*(2.0*1.0-1.0), tofloat2(p_o1354830_scale_x*(2.0*1.0-1.0), p_o1354830_scale_y*(2.0*1.0-1.0)))), p_o1354822_sides, p_o1354822_radius*1.0, p_o1354822_edge*1.0);
+float o1354822_0_1_f = shape_circle((transform2((scale((uv), tofloat2(0.5+p_o1354876_cx, 0.5+p_o1354876_cy), tofloat2(p_o1354876_scale_x, p_o1354876_scale_y))), tofloat2(p_o1354830_translate_x*(2.0*1.0-1.0), p_o1354830_translate_y*(2.0*1.0-1.0)), p_o1354830_rotate*0.01745329251*(2.0*1.0-1.0), tofloat2(p_o1354830_scale_x*(2.0*1.0-1.0), p_o1354830_scale_y*(2.0*1.0-1.0)))), p_o1354822_sides, p_o1354822_radius*_LightCenterRadius, p_o1354822_edge*1.0);
 float o1354823_0_clamp_false = smoothstep(0.0, 1.0, o1354822_0_1_f);
 float o1354823_0_clamp_true = clamp(o1354823_0_clamp_false, 0.0, 1.0);
 float o1354823_0_1_f = o1354823_0_clamp_false;
@@ -452,7 +465,7 @@ float o1354821_0_3_f = o1354821_2_clamp_false;
 float3 o1354825_3_clamp_false = pow(tofloat3(o1354821_0_3_f),tofloat3(p_o1354825_d_in2_x, p_o1354825_d_in2_y, p_o1354825_d_in2_z));
 float3 o1354825_3_clamp_true = clamp(o1354825_3_clamp_false, tofloat3(0.0), tofloat3(1.0));
 float3 o1354825_0_5_rgb = o1354825_3_clamp_false;
-float o1354822_0_4_f = shape_circle((transform2((scale((uv), tofloat2(0.5+p_o1354876_cx, 0.5+p_o1354876_cy), tofloat2(p_o1354876_scale_x, p_o1354876_scale_y))), tofloat2(p_o1354831_translate_x*(2.0*1.0-1.0), p_o1354831_translate_y*(2.0*1.0-1.0)), p_o1354831_rotate*0.01745329251*(2.0*1.0-1.0), tofloat2(p_o1354831_scale_x*(2.0*1.0-1.0), p_o1354831_scale_y*(2.0*1.0-1.0)))), p_o1354822_sides, p_o1354822_radius*1.0, p_o1354822_edge*1.0);
+float o1354822_0_4_f = shape_circle((transform2((scale((uv), tofloat2(0.5+p_o1354876_cx, 0.5+p_o1354876_cy), tofloat2(p_o1354876_scale_x, p_o1354876_scale_y))), tofloat2(p_o1354831_translate_x*(2.0*1.0-1.0), p_o1354831_translate_y*(2.0*1.0-1.0)), p_o1354831_rotate*0.01745329251*(2.0*1.0-1.0), tofloat2(p_o1354831_scale_x*(2.0*1.0-1.0), p_o1354831_scale_y*(2.0*1.0-1.0)))), p_o1354822_sides, p_o1354822_radius*_LightCenterRadius, p_o1354822_edge*1.0);
 float o1354823_2_clamp_false = smoothstep(0.0, 1.0, o1354822_0_4_f);
 float o1354823_2_clamp_true = clamp(o1354823_2_clamp_false, 0.0, 1.0);
 float o1354823_0_3_f = o1354823_2_clamp_false;
@@ -499,7 +512,7 @@ float o1354821_0_5_f = o1354821_4_clamp_false;
 float3 o1354825_6_clamp_false = pow(tofloat3(o1354821_0_5_f),tofloat3(p_o1354825_d_in2_x, p_o1354825_d_in2_y, p_o1354825_d_in2_z));
 float3 o1354825_6_clamp_true = clamp(o1354825_6_clamp_false, tofloat3(0.0), tofloat3(1.0));
 float3 o1354825_0_8_rgb = o1354825_6_clamp_false;
-float o1354822_0_7_f = shape_circle((scale((uv), tofloat2(0.5+p_o1354876_cx, 0.5+p_o1354876_cy), tofloat2(p_o1354876_scale_x, p_o1354876_scale_y))), p_o1354822_sides, p_o1354822_radius*1.0, p_o1354822_edge*1.0);
+float o1354822_0_7_f = shape_circle((scale((uv), tofloat2(0.5+p_o1354876_cx, 0.5+p_o1354876_cy), tofloat2(p_o1354876_scale_x, p_o1354876_scale_y))), p_o1354822_sides, p_o1354822_radius*_LightCenterRadius, p_o1354822_edge*1.0);
 float o1354823_4_clamp_false = smoothstep(0.0, 1.0, o1354822_0_7_f);
 float o1354823_4_clamp_true = clamp(o1354823_4_clamp_false, 0.0, 1.0);
 float o1354823_0_5_f = o1354823_4_clamp_false;
@@ -539,7 +552,7 @@ float3 o1354833_0_1_rgb = tanh(((o1354832_0_2_rgba).rgb));
 float4 o1354876_0_1_rgba = tofloat4(o1354833_0_1_rgb, 1.0);
 
 				// sample the generated texture
-				fixed4 col = o1354876_0_1_rgba;
+				fixed4 col = o1354876_0_1_rgba * tex2D(_Mask, i.maskUV);
 
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
