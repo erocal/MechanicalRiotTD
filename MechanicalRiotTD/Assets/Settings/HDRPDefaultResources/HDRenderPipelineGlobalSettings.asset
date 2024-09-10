@@ -67,7 +67,8 @@ MonoBehaviour:
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
   afterPostProcessBlursCustomPostProcesses: []
-  afterPostProcessCustomPostProcesses: []
+  afterPostProcessCustomPostProcesses:
+  - RadialBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   beforeTAACustomPostProcesses:
   - TopographicScanHDRP, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   lightLayerName0: Light Layer default

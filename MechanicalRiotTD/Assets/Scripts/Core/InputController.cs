@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System;
+using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
@@ -20,6 +20,12 @@ public class InputController : MonoBehaviour
         }
         private set { }
     }
+
+    #region -- Action --
+
+    public Action onPlayerCaplock;
+
+    #endregion
 
     #endregion
 
@@ -100,6 +106,18 @@ public class InputController : MonoBehaviour
         if (CanProcessInput())
         {
             return Input.GetKey(KeyCode.CapsLock);
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// 是否放開CapsLock
+    /// </summary>
+    public bool GetCapUp()
+    {
+        if (CanProcessInput())
+        {
+            return Input.GetKeyUp(KeyCode.CapsLock);
         }
         return false;
     }

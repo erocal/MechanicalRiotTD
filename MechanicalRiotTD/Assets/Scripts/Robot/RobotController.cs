@@ -50,6 +50,8 @@ public class RobotController : RobotsPool
 
         }
 
+        Teleport(other);
+
     }
 
     #endregion
@@ -88,6 +90,20 @@ public class RobotController : RobotsPool
         SetLayerRecursively(this.gameObject, initLayer);
 
         currentRevealCoroutine = null;
+
+    }
+
+    private void Teleport(Collider other)
+    {
+
+        TeleportLink teleportLink = other.GetComponent<TeleportLink>();
+
+        if (teleportLink != null)
+        {
+
+            teleportLink.Teleport(this.transform);
+
+        }
 
     }
 

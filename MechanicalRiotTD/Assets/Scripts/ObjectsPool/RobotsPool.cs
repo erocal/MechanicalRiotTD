@@ -10,6 +10,8 @@ public class RobotsPool : ObjectPoolsManager
 
     [SerializeField] private GameObject poolGameObject;
     [SerializeField] private Transform instantiateRoot;
+    [SerializeField] private float firstDelayInstantiate = 5f;
+    [SerializeField] private float repeatRate = 2f;
 
     #endregion
 
@@ -22,7 +24,7 @@ public class RobotsPool : ObjectPoolsManager
     private void Awake()
 	{
 
-        InvokeRepeating("SpawnRobots", 5f, 5f);
+        InvokeRepeating("SpawnRobots", firstDelayInstantiate, repeatRate);
 
     }
 

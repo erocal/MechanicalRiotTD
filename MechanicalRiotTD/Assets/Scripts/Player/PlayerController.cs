@@ -30,12 +30,6 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region -- Action --
-
-    public event Action onCaplock;
-
-    #endregion
-
     private InputController input;
     private CharacterController characterController;
     private Animator animator;
@@ -113,7 +107,7 @@ public class PlayerController : MonoBehaviour
             nextFrameSpeed = 1f;
             targetMovement *= sprintSpeedModifier;
             SmoothRotation(targetMovement);
-            onCaplock?.Invoke();
+            input.onPlayerCaplock?.Invoke();
 
         }
         else
