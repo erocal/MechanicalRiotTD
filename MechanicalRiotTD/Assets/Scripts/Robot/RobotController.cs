@@ -6,6 +6,7 @@ public class RobotController : RobotsPool
 
     #region -- 資源參考區 --
 
+    [Header("RobotController")]
     [SerializeField] private float scanRevealDuration = 5f;
     [SerializeField] private float selfDestructDuration = 60f;
 

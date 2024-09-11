@@ -8,6 +8,7 @@ public class RobotsPool : ObjectPoolsManager
 
     #region -- 資源參考區 --
 
+    [Header("RobotsPool")]
     [SerializeField] private GameObject poolGameObject;
     [SerializeField] private Transform instantiateRoot;
     [SerializeField] private float firstDelayInstantiate = 5f;
